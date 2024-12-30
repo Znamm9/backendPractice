@@ -1,9 +1,20 @@
 import { NestFactory } from '@nestjs/core';
 import { StudentsModule } from './students/students.module';
 import { ValidationPipe } from '@nestjs/common';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(StudentsModule);
+
+  const config = new DocumentBuilder()
+    .setTitle('Cats example')
+    .setDescription('The cats API description')
+    .setVersion('1.0')
+    .addTag('cats')
+    .build();
+  const documentFactory = () => SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, documentFactory);
+
   app.use((req, res, next) => {
     res.removeHeader('x-powered-by');
     res.removeHeader('date');

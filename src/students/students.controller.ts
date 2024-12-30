@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, NotFoundException, Param, Post } from '@nestjs/common';
 import { CreateStudentDTO } from './dtos/create-student.dto';
 import { StudentRepository } from './students.repository';
 import { StudentService } from './student.service';
@@ -23,7 +23,13 @@ export class StudentsController {
   }
 
   @Get("/:id")
-  getStudent(@Param() id: string) { 
-    return this.studentService.findOne(id)
+  async getStudent(@Param() id: string) { 
+    const student = await this.studentService.findOne(id);
+
+    if (!student) { 
+      throw new NotFoundException("student not found");
+    }
+
+    return student;
   }
 }

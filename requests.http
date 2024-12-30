@@ -12,4 +12,4 @@ Content-Type: application/json
 }
 
 ### get specific user
-GET http://localhost:3000/students/942
+GET http://localhost:3000/students/942234
