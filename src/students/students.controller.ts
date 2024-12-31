@@ -23,7 +23,9 @@ export class StudentsController {
   }
 
   @Get("/:id")
-  async getStudent(@Param() id: string) { 
+  async getStudent(@Param("id") id: string) { 
+    
+    // const reqbody = 
     const student = await this.studentService.findOne(id);
 
     if (!student) { 

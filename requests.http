@@ -7,9 +7,9 @@ POST http://localhost:3000/students
 Content-Type: application/json
 
 {
-  "name": "ihor",
-  "email": "ihor@gmail.com"
+  "name": "Vados",
+  "email": "ihor_123@gmail.com"
 }
 
 ### get specific user
-GET http://localhost:3000/students/942234
+GET http://localhost:3000/students/570

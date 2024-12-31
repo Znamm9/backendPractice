@@ -5,7 +5,7 @@ export class StudentRepository {
   async findOne(id: string) {
     const contents = await readFile('students.json', 'utf8');
     const messages = JSON.parse(contents);
-
+    
     return messages[id];
   }
 
